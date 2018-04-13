@@ -5,8 +5,10 @@ import os
 import pathlib
 from zipfile import ZipFile
 
+import boto3
+
 class Build():
-    """A zipfile containing the relevant files from the project repo."""
+    """Creates a build for AWS lambda deployment."""
 
     ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -33,26 +35,23 @@ class Build():
             outfile_name = self.ROOT_PATH + '/builds/' + self.version_number + '.zip'
             with ZipFile(outfile_name, 'w') as f:
                 f.write(self.main_filename)
-                f.write('/node_modules/')
+                f.write(self.ROOT_PATH + '/node_modules/')
 
     # TODO: implement via boto
     def upload_to_s3(self):
         pass
 
-    # TODO: implement via boto
+    # TODO: update to pull from latest s3 once upload_to_s3 becomes necessary (> 10mb build file).
     def update_lambda_to_latest_build(self):
+        # TODO: pull latest version number from S3, don't deploy if it already exists.
         pass
 
-    # TODO: pull latest version number from S3, don't deploy if it already exists.
     def deploy_latest(self):
-        if self.version_exists(self.version_number):
-            print("\nFAILED\nUpdate package.json version\n")
-            return
-        else:
-            self.upload_to_s3()
-            self.update_lambda_to_latest_build()
+        # TODO: uncomment once upload_to_s3 is complete
+        # self.upload_to_s3()
+        self.update_lambda_to_latest_build()
 
 if __name__ == '__main__':
     b = Build()
     b.create_build()
-    # b.deploy_latest()
+    b.deploy_latest()
