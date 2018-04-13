@@ -1,5 +1,6 @@
 const Alexa = require('alexa-sdk');
 
+// TODO: Add more handlers.
 const handlers = {
     'AMAZON.CancelIntent': function () {
         this.response.speak("Goodbye!");
