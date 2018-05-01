@@ -1,4 +1,4 @@
-Recipe Robot
+Alexa Skill Template w/ Custom Deploy
 --
 
 **Amazon's ASK CLI makes this app's custom deployment script irrelevant: https://developer.amazon.com/docs/smapi/ask-cli-command-reference.html**
