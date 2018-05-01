@@ -1,7 +1,7 @@
 {
-  "name": "recipe_robot",
+  "name": "alexa_skills_template_custom_deploy",
   "version": "1.0.0",
-  "description": "An alexa skill template",
+  "description": "An alexa skill template w/ a custom deploy script",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Add some tests!\" && exit 1"
